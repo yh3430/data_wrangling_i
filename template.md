@@ -184,3 +184,22 @@ fellow_df = read_excel("data/lotR_Words.xlsx",
 ``` r
 pulse_df = read_sas("data/public_pulse_data.sas7bdat")
 ```
+
+## why to never use ‘read.csv’
+
+They have similar function. But ‘read.csv’ also import everything as a
+data frame rather than a table. The table get printed more nicely. The
+‘read.csv’ read thing as factor variables. ‘read.csv’ doesn’t give
+‘tibble’
+
+``` r
+litter_df_base = read.csv("data/FAS_litters.csv")
+```
+
+## how do i export data
+
+there’s a good data
+
+``` r
+write_csv(fellow_df, "data/fellowship_words.csv")
+```
