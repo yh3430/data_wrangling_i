@@ -129,7 +129,7 @@ Data summary
 ## Arguments in ‘read\_csv’
 
 ``` r
-litter_df <- 
+litter_df = 
   read_csv("data/FAS_litters.csv",
            skip = 5,
            col_names = FALSE,
@@ -146,3 +146,41 @@ litter_df <-
     ## 
     ## i Use `spec()` to retrieve the full column specification for this data.
     ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+## Parsing columns
+
+``` r
+litters_data = read_csv(file = "./data/FAS_litters.csv",
+  col_types = cols(
+    Group = col_character(),
+    `Litter Number` = col_character(),
+    `GD0 weight` = col_double(),
+    `GD18 weight` = col_double(),
+    `GD of Birth` = col_integer(),
+    `Pups born alive` = col_integer(),
+    `Pups dead @ birth` = col_integer(),
+    `Pups survive` = col_integer()
+  )
+)
+```
+
+## Reading from Excel
+
+Read MLB data.
+
+``` r
+mlb11 = read_excel("data/mlb11.xlsx")
+```
+
+LotR Words is next.
+
+``` r
+fellow_df = read_excel("data/lotR_Words.xlsx",
+                       range = "B3:D6")
+```
+
+## Read a SAS file
+
+``` r
+pulse_df = read_sas("data/public_pulse_data.sas7bdat")
+```
