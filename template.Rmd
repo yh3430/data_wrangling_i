@@ -37,10 +37,22 @@ One I use a lot is:
 ```{r, echo=FALSE}
 view(litter_df)
 ```
-
+ 
 here is 'skimr':
 ```{r}
 skimr::skim(litter_df)
+```
+
+
+
+## Arguments in 'read_csv'
+
+```{r}
+litter_df = 
+  read_csv("data/FAS_litters.csv",
+           skip = 5,
+           col_names = FALSE,
+           na = "Low8")
 ```
 
 
