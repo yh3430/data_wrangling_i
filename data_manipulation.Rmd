@@ -19,3 +19,26 @@ pups_df <- read_csv("data/FAS_pups.csv")
 pups_df = janitor::clean_names(pups_df)
 ```
 
+## 'select'
+
+Let's select some columns
+
+```{r}
+select(litter_df, group, litter_number)
+select(litter_df, group, gd0_weight, gd18_weight)
+select(litter_df, group, starts_with("pups"))
+
+select(litter_df, group, gd0_weight:gd_of_birth)
+select(litter_df, -litter_number)
+
+select(litter_df, GROUP = group, litter_number)
+rename(litter_df, GROUP = group)
+
+select(litter_df, litter_number, everything())
+
+relocate(litter_df, litter_number)
+
+select(pups_df, litter_number, sex, pd_ears)
+```
+
+## ‘filter'
