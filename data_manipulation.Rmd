@@ -1,0 +1,21 @@
+---
+title: "Data Manipulation"
+output: github_document
+---
+
+```{r, echo = FALSE, message=FALSE}
+library(tidyverse)
+```
+
+## Import some data
+
+I want to import 'FAS_litters.csv'
+
+```{r}
+litter_df <- read_csv("data/FAS_litters.csv")
+litter_df = janitor::clean_names(litter_df)
+
+pups_df <- read_csv("data/FAS_pups.csv")
+pups_df = janitor::clean_names(pups_df)
+```
+
