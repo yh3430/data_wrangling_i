@@ -61,7 +61,23 @@ drop_na(litter_df)
 drop_na(litter_df, gd0_weight)
 ```
 
+## 'mutate'
 
+Let's add or change column!
+```{r}
+mutate(litter_df,
+       weigh_change = gd18_weight - gd0_weight,
+       group = str_to_lower(group))
+```
+
+## 'arrange'
+
+Let's rearrange the data.
+```{r}
+arrange(litter_df, gd0_weight)
+arrange(litter_df, desc(gd0_weight))
+
+```
 
 
 
