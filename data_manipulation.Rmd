@@ -39,6 +39,39 @@ select(litter_df, litter_number, everything())
 relocate(litter_df, litter_number)
 
 select(pups_df, litter_number, sex, pd_ears)
+
+
 ```
 
 ## ‘filter'
+
+```{r}
+filter(litter_df, gd_of_birth == 20)
+filter(litter_df, group == "Con7")
+
+filter(litter_df, gd0_weight < 23)
+
+filter(litter_df, pups_survive != 4)
+
+filter(litter_df, !(group == "Con7"))
+filter(litter_df, group %in% c("Con7", "Con8"))
+filter(litter_df, group == "Con7", gd_of_birth == 20)
+
+drop_na(litter_df)
+drop_na(litter_df, gd0_weight)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
