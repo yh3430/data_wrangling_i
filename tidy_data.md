@@ -52,3 +52,58 @@ knitr::kable()
 |:----------|----:|----:|
 | treatment |   4 |   8 |
 | control   |   3 |   6 |
+
+\#learning assessment 1
+
+``` r
+litters_wide = 
+  read_csv("./data/FAS_litters.csv") %>%
+  janitor::clean_names() %>%
+  select(litter_number, ends_with("weight")) %>% 
+  pivot_longer(
+    gd0_weight:gd18_weight,
+    names_to = "gd", 
+    values_to = "weight") %>% 
+  mutate(gd = recode(gd, "gd0_weight" = 0, "gd18_weight" = 18))
+```
+
+    ## Rows: 49 Columns: 8
+
+    ## -- Column specification --------------------------------------------------------
+    ## Delimiter: ","
+    ## chr (2): Group, Litter Number
+    ## dbl (6): GD0 weight, GD18 weight, GD of Birth, Pups born alive, Pups dead @ ...
+
+    ## 
+    ## i Use `spec()` to retrieve the full column specification for this data.
+    ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+## bind\_rows
+
+Import the LotR movie words stuff
+
+``` r
+fellowship_df =
+  read_excel("data/LotR_Words.xlsx", range = "B3:D6") %>% 
+  mutate(movie = "fellowship_rings")
+
+two_towers = 
+  readxl::read_excel("./data/LotR_Words.xlsx", range = "F3:H6") %>%
+  mutate(movie = "two_towers")
+
+return_king = 
+  readxl::read_excel("./data/LotR_Words.xlsx", range = "J3:L6") %>%
+  mutate(movie = "return_king")
+
+lotr_tidy = 
+  bind_rows(fellowship_df, two_towers, return_king) %>% 
+  janitor::clean_names() %>%
+  pivot_longer(
+    female:male,
+    names_to = "gender", 
+    values_to = "words"
+  ) %>% 
+  relocate(movie)
+```
+
+(what about ‘rbind’..? never use this one. Always use ‘bind\_rows’)
